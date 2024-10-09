@@ -22,6 +22,9 @@ const client = new OAuth2Client('1086171737744-s8mkhndpskmklbn31liqnlqoqog6mnkq.
 const routerAPI = express.Router();
 app.use('/', routerAPI); // necessary
 app.use(cors());
+routerAPI.get("/", (req, res) => {
+    res.send("Hello World");
+});
 routerAPI.post("/auth/sign_up",createUser)
 routerAPI.post("/auth/google",googleAuth)
 
@@ -30,3 +33,4 @@ routerAPI.post("/auth/google",googleAuth)
 app.listen(3000, () => {
     console.log(`Server is running on port ${port}`);
 });
+export default app;

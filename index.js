@@ -1,10 +1,11 @@
 import express from "express";
-
+config();
 // Create the connection to database
 export const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    database: 'test',
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    database: process.env.DB_NAME,
+    password: process.env.DB_PASSWORD,
 });
 
 
@@ -14,6 +15,8 @@ import mysql from "mysql2";
 import bodyParser from "body-parser";
 import {createUser,googleAuth} from "./authController.js";
 import cors from "cors";
+import {config} from "dotenv";
+
 const app = express();
 const port = 3000
 app.use(express.json());
